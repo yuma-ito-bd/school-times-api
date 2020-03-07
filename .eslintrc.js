@@ -8,4 +8,11 @@ module.exports = {
     ],
     plugins: ["@typescript-eslint"],
     parser: "@typescript-eslint/parser",
+    env:{
+        "node": true
+    },
+    rules: {
+        // カラム名がアンダースコアなので警告を無視する
+        "@typescript-eslint/camelcase": "off"
+    }
 }
