@@ -4,8 +4,8 @@
   "description": "School TimesのAPIサーバ用リポジトリ",
   "main": "app/app.js",
   "scripts": {
-    "conpile": "tsc",
-    "start": "node ./dist/app.js",
+    "conpile": "rm -rf ./dist && tsc",
+    "start": "node ./dist/server.js",
     "test": "jest"
   },
   "repository": {
