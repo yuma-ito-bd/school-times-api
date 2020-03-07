@@ -6,6 +6,7 @@
   "scripts": {
     "conpile": "rm -rf ./dist && tsc",
     "start": "node ./dist/server.js",
+    "nodemon": "nodemon -L --config nodemon/nodemon.json",
     "test": "jest"
   },
   "repository": {
@@ -28,7 +29,9 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
+    "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   }
 }
