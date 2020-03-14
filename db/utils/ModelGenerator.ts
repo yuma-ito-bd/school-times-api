@@ -32,5 +32,5 @@ export const connectModelGenerate = (dbConfig: any) => {
 };
 
 export declare interface SchoolTimesDB {
-    Articles: typeof schema.ARTICLES.Articles;
+    Articles: typeof schema.Articles.Articles;
 }
