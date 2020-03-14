@@ -13,6 +13,8 @@ module.exports = {
     },
     rules: {
         // カラム名がアンダースコアなので警告を無視する
-        "@typescript-eslint/camelcase": "off"
+        "@typescript-eslint/camelcase": "off",
+        // 本当は良くないけど仕方なく・・・。
+        "@typescript-eslint/ban-ts-ignore": "off"
     }
 }

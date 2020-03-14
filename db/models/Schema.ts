@@ -1,7 +1,8 @@
-import * as Articles from './Articles';
+import * as ArticlesModels from './Articles';
 
-export default {
-    Articles,
+// Modelsとfactory
+export const schema = {
+    ARTICLES: ArticlesModels,
 };
 
 // スキーマ指定

@@ -1,11 +1,13 @@
 import { Sequelize } from 'sequelize';
 import { SchoolTimesDB, connectModelGenerate } from '../utils/ModelGenerator';
-import schema from './Schema';
+import { schema } from './Schema';
 
 const setModel = (sequelize: Sequelize): SchoolTimesDB => {
     const db: any = {};
 
     Object.keys(schema).forEach(tableName => {
+        // TODO: 本当は型定義してts-ignoreを外したい
+        // @ts-ignore
         db[tableName] = schema[tableName].factory(sequelize);
     });
 
@@ -23,4 +25,4 @@ const setModel = (sequelize: Sequelize): SchoolTimesDB => {
 const modelGenerator = connectModelGenerate(process.env.DATABASE_URL);
 const db = modelGenerator(setModel);
 
-export default db;
+export { db };
