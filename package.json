@@ -7,7 +7,9 @@
     "conpile": "rm -rf ./dist && tsc",
     "start": "node ./dist/server.js",
     "nodemon": "nodemon -L --config nodemon/nodemon.json",
-    "test": "jest"
+    "test": "jest",
+    "migrate": "sequelize db:migrate --env=development",
+    "migrate:undo": "sequelize db:migrate:undo --env=development"
   },
   "repository": {
     "type": "git",

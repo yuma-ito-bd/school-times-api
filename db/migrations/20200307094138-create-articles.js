@@ -8,11 +8,11 @@ module.exports = {
                     primaryKey: true,
                     type: Sequelize.INTEGER,
                 },
-                created_at: {
+                create_time: {
                     allowNull: false,
                     type: Sequelize.DATE,
                 },
-                updated_at: {
+                update_time: {
                     allowNull: false,
                     type: Sequelize.DATE,
                 },

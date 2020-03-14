@@ -14,7 +14,7 @@ services:
       - 3000:3000
       - 9229:9229
     environment:
-      NODE_ENV: local
+      NODE_ENV: development
       PORT: 3000
       DATABASE_URL: postgres://huser:Passw0rd@db:5432/mydatabase
       TZ: Asia/Tokyo
