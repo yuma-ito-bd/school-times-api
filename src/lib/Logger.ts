@@ -6,19 +6,19 @@ const LOG_PREFIX = {
 };
 
 export class Logger {
-    public static info(message: string): void {
-        console.info(LOG_PREFIX.INFO, message);
+    public static info(message: string, ...optionalParams: any[]): void {
+        console.info(LOG_PREFIX.INFO, message, optionalParams);
     }
 
-    public static warn(message: string): void {
-        console.warn(LOG_PREFIX.WARN, message);
+    public static warn(message: string, ...optionalParams: any[]): void {
+        console.warn(LOG_PREFIX.WARN, message, optionalParams);
     }
 
-    public static error(message: string): void {
-        console.error(LOG_PREFIX.ERROR, message);
+    public static error(message: string, ...optionalParams: any[]): void {
+        console.error(LOG_PREFIX.ERROR, message, optionalParams);
     }
 
-    public static fatal(message: string): void {
-        console.error(LOG_PREFIX.FATAL, message);
+    public static fatal(message: string, ...optionalParams: any[]): void {
+        console.error(LOG_PREFIX.FATAL, message, optionalParams);
     }
 }
