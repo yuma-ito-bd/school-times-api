@@ -15,7 +15,7 @@ class Articles extends Model {
     public authorId!: number;
     public status!: number;
 
-    public static attach(sequelize: Sequelize): void {
+    public static initialize(sequelize: Sequelize): void {
         this.init(
             {
                 id: {
@@ -103,9 +103,4 @@ class Articles extends Model {
     }
 }
 
-const factory = (sequelize: Sequelize): typeof Articles => {
-    Articles.attach(sequelize);
-    return Articles;
-};
-
-export { Articles, factory };
+export { Articles };

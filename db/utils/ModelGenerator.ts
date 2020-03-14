@@ -1,5 +1,5 @@
 import { Sequelize, Op } from 'sequelize';
-import { schema } from '../models/Schema';
+import { models } from '../models/Schema';
 
 export default class ModelGenerater {
     public sequelize: Sequelize;
@@ -32,5 +32,5 @@ export const connectModelGenerate = (dbConfig: any) => {
 };
 
 export declare interface SchoolTimesDB {
-    Articles: typeof schema.Articles.Articles;
+    Articles: typeof models.Articles;
 }
