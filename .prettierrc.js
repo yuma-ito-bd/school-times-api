@@ -8,6 +8,6 @@ module.exports = {
     tabWidth: 4,
     // オブジェクトのkeyはシングルクォート有り無しどちらでも許可
     // quoteProps: "preserve",
-    // 1行の長さを100文字に制限する。
-    printWidth: 100,
+    // 1行の長さを80文字に制限する。
+    printWidth: 80,
 };

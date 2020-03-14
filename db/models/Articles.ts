@@ -30,7 +30,9 @@ class Articles extends Model {
                     type: DataTypes.DATE,
                     allowNull: false,
                     get(this: Articles): unknown {
-                        const dateVal: Date | null = this.getDataValue('createTime');
+                        const dateVal: Date | null = this.getDataValue(
+                            'createTime'
+                        );
                         if (!dateVal) return '';
                         return format(
                             convertToTimeZone(dateVal, { timeZone: 'Etc/GMT' }),
@@ -43,7 +45,9 @@ class Articles extends Model {
                     type: DataTypes.DATE,
                     allowNull: false,
                     get(this: Articles): unknown {
-                        const dateVal: Date | null = this.getDataValue('updateTime');
+                        const dateVal: Date | null = this.getDataValue(
+                            'updateTime'
+                        );
                         if (!dateVal) return '';
                         return format(
                             convertToTimeZone(dateVal, { timeZone: 'Etc/GMT' }),
@@ -101,7 +105,6 @@ class Articles extends Model {
 
 const factory = (sequelize: Sequelize): typeof Articles => {
     Articles.attach(sequelize);
-
     return Articles;
 };
 
