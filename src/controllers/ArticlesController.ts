@@ -17,7 +17,7 @@ class ArticlesController {
     async get(params: GetArticleRequest): Promise<GetArticleResponse> {
         Logger.info(`ArticlesController.get is called.`, params);
         const usecase = new ArticleUsecase(this._repository);
-        const list = await usecase.getArticleList(params.articleId);
+        const list = await usecase.getArticleList(params.authorId);
         const response = { articles: list };
         Logger.info(`ArticlesController.get is end.`, JSON.stringify(response));
         return response;
