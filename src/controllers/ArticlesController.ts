@@ -2,9 +2,28 @@ import { Request, Response } from 'express';
 import { db } from '../../db/models/index';
 import { Articles } from '../../db/models/Articles';
 import { Logger } from '../lib/Logger';
+import { GetArticleRequest, GetArticleResponse } from '../interface/GetArticle';
+import { ArticleRepositoryInterface } from '../usecase/article/ArticleRepository';
+import { ArticleUsecase } from '../usecase/article/ArticleUsecase';
+import { ArticleRepository } from '../interface/ArticleRepository';
 
 class ArticlesController {
-    async get(req: Request, res: Response) {
+    private _repository: ArticleRepositoryInterface;
+
+    constructor() {
+        this._repository = new ArticleRepository();
+    }
+
+    async get(params: GetArticleRequest): Promise<GetArticleResponse> {
+        Logger.info(`ArticlesController.get is called.`, params);
+        const usecase = new ArticleUsecase(this._repository);
+        const list = await usecase.getArticleList(params.articleId);
+        const response = { articles: list };
+        Logger.info(`ArticlesController.get is end.`, JSON.stringify(response));
+        return response;
+    }
+
+    async get_old(req: Request, res: Response) {
         Logger.info(`ArticlesController.get is called.`);
 
         const { id, authorId, status } = req.query;
