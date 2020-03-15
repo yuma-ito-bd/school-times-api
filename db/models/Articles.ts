@@ -1,6 +1,5 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { format } from 'date-fns';
-import { convertToTimeZone } from 'date-fns-timezone';
 import { SCHEMA_NAME } from './Schema';
 
 const TABLE_NAME = 'articles';
@@ -34,10 +33,7 @@ class Articles extends Model {
                             'createTime'
                         );
                         if (!dateVal) return '';
-                        return format(
-                            convertToTimeZone(dateVal, { timeZone: 'Etc/GMT' }),
-                            'yyyy-MM-dd HH:mm:ss'
-                        );
+                        return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
                     },
                 },
                 updateTime: {
@@ -49,10 +45,7 @@ class Articles extends Model {
                             'updateTime'
                         );
                         if (!dateVal) return '';
-                        return format(
-                            convertToTimeZone(dateVal, { timeZone: 'Etc/GMT' }),
-                            'yyyy-MM-dd HH:mm:ss'
-                        );
+                        return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
                     },
                 },
                 deleteFlg: {
