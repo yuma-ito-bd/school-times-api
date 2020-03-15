@@ -13,7 +13,10 @@ class ArticlesController {
             authorId,
             status,
         });
-        const options: any = { where: { deleteFlg: false } };
+        const options: any = {
+            where: { deleteFlg: false },
+            order: [['createTime', 'desc']],
+        };
         if (id) options.where.id = id;
         if (authorId) options.where.authorId = authorId;
         if (status) options.where.status = status;
