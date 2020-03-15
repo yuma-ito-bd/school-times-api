@@ -9,7 +9,9 @@
     "nodemon": "nodemon -L --config nodemon/nodemon.json",
     "test": "jest",
     "migrate": "sequelize db:migrate --env=development",
-    "migrate:undo": "sequelize db:migrate:undo --env=development"
+    "migrate:undo": "sequelize db:migrate:undo --env=development",
+    "seed:all": "sequelize db:seed:all --env=development",
+    "seed:undo:all": "sequelize db:seed:undo:all --env=development"
   },
   "repository": {
     "type": "git",

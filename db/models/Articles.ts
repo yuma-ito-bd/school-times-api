@@ -10,7 +10,7 @@ class Articles extends Model {
     public createTime!: Date;
     public updateTime!: Date;
     public deleteFlg!: boolean;
-    public title?: number;
+    public title?: string;
     public contents?: string;
     public authorId!: number;
     public status!: number;
