@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { deepHealthCheckController } from '../controllers/DeepHealthCheckController';
+import { deepHealthCheckController } from '../../controllers/DeepHealthCheckController';
 
 const deepHealthRouter = Router();
 

@@ -1,7 +1,6 @@
 import express from 'express';
-import { router as usersRouter } from './routes/users';
-import { deepHealthRouter } from './routes/DeepHealthCheckRouter';
-import { articlesRouter } from './routes/ArticlesRouter';
+import { deepHealthRouter } from './DeepHealthCheckRouter';
+import { articlesRouter } from './ArticlesRouter';
 
 /**
  *  Express app
@@ -13,6 +12,10 @@ export default class App {
         this.app = express();
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(function(req, res, next) {
+            res.header('Access-Control-Allow-Origin', '*');
+            next();
+        });
         this.setRouter();
     }
 
@@ -21,7 +24,6 @@ export default class App {
      * app.METHOD(PATH, HANDLER)
      */
     private setRouter(): void {
-        this.app.use('/users', usersRouter);
         this.app.use('/deepHealthCheck', deepHealthRouter);
         this.app.use('/articles', articlesRouter);
     }
