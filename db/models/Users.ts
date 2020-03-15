@@ -1,19 +1,20 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { format } from 'date-fns';
 import { SCHEMA_NAME } from './Schema';
-import { Users } from './Users';
+import { Articles } from './Articles';
 
-const TABLE_NAME = 'articles';
+const TABLE_NAME = 'users';
 
-export class Articles extends Model {
+class Users extends Model {
     public id!: number;
     public createTime!: Date;
     public updateTime!: Date;
     public deleteFlg!: boolean;
-    public title?: string;
-    public contents?: string;
-    public authorId!: number;
-    public status!: number;
+    public name!: string;
+    public schoolId!: string;
+    public classId!: string;
+    /** 属性（1:保護者, 2:先生, 3:管理者） */
+    public attribute!: string;
 
     public static initialize(sequelize: Sequelize): void {
         this.init(
@@ -29,49 +30,48 @@ export class Articles extends Model {
                     field: 'create_time',
                     type: DataTypes.DATE,
                     allowNull: false,
-                    get(this: Articles): unknown {
+                    get(this: Users): unknown {
                         const dateVal: Date | null = this.getDataValue(
                             'createTime'
                         );
                         if (!dateVal) return '';
-                        return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
+                        else return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
                     },
                 },
                 updateTime: {
                     field: 'update_time',
                     type: DataTypes.DATE,
                     allowNull: false,
-                    get(this: Articles): unknown {
+                    get(this: Users): unknown {
                         const dateVal: Date | null = this.getDataValue(
                             'updateTime'
                         );
                         if (!dateVal) return '';
-                        return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
+                        else return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
                     },
                 },
                 deleteFlg: {
                     field: 'delete_flg',
                     type: DataTypes.BOOLEAN,
                     allowNull: false,
-                    defaultValue: false,
                 },
-                title: {
-                    field: 'title',
+                name: {
+                    field: 'name',
                     type: DataTypes.STRING,
-                    allowNull: true,
-                },
-                contents: {
-                    field: 'contents',
-                    type: DataTypes.STRING,
-                    allowNull: true,
-                },
-                authorId: {
-                    field: 'author_id',
-                    type: DataTypes.INTEGER,
                     allowNull: false,
                 },
-                status: {
-                    field: 'status',
+                schoolId: {
+                    field: 'school_id',
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                classId: {
+                    field: 'class_id',
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                attribute: {
+                    field: 'attribute',
                     type: DataTypes.INTEGER,
                     allowNull: false,
                 },
@@ -88,9 +88,10 @@ export class Articles extends Model {
     }
 
     public static associate(): void {
-        Articles.belongsTo(Users, {
+        Users.hasMany(Articles, {
             foreignKey: 'author_id',
-            targetKey: 'id',
         });
     }
 }
+
+export { Users };
