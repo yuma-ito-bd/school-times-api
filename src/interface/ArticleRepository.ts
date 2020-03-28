@@ -23,8 +23,11 @@ export class ArticleRepository implements ArticleRepositoryInterface {
         return result.map(data => {
             return new Article({
                 id: data.id,
+                createTime: data.createTime,
                 author: data.User.name,
                 status: data.status,
+                title: data.title,
+                contents: data.contents,
             });
         });
     }

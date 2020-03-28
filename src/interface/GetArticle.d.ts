@@ -1,11 +1,11 @@
-import { ArticleData } from '../usecase/article/ArticleData';
+import { Article } from '../domain/Article';
 
 export type GetArticleRequest = {
-    articleId: number;
-    authorId: number;
-    status: number;
+    articleId?: number;
+    authorId?: number;
+    status?: number;
 };
 
 export type GetArticleResponse = {
-    articles: ArticleData[];
+    articles: Article[];
 };
