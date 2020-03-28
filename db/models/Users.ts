@@ -1,5 +1,4 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
-import { format } from 'date-fns';
 import { SCHEMA_NAME } from './Schema';
 import { Articles } from './Articles';
 
@@ -30,25 +29,11 @@ class Users extends Model {
                     field: 'create_time',
                     type: DataTypes.DATE,
                     allowNull: false,
-                    get(this: Users): unknown {
-                        const dateVal: Date | null = this.getDataValue(
-                            'createTime'
-                        );
-                        if (!dateVal) return '';
-                        else return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
-                    },
                 },
                 updateTime: {
                     field: 'update_time',
                     type: DataTypes.DATE,
                     allowNull: false,
-                    get(this: Users): unknown {
-                        const dateVal: Date | null = this.getDataValue(
-                            'updateTime'
-                        );
-                        if (!dateVal) return '';
-                        else return format(dateVal, 'yyyy-MM-dd HH:mm:ss');
-                    },
                 },
                 deleteFlg: {
                     field: 'delete_flg',
