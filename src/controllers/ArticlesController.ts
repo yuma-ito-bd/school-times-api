@@ -23,34 +23,6 @@ class ArticlesController {
         return response;
     }
 
-    async get_old(req: Request, res: Response) {
-        Logger.info(`ArticlesController.get is called.`);
-
-        const { id, authorId, status } = req.query;
-        Logger.info(`Input param`, {
-            id,
-            authorId,
-            status,
-        });
-        const options: any = {
-            where: { deleteFlg: false },
-            order: [['createTime', 'desc']],
-        };
-        if (id) options.where.id = id;
-        if (authorId) options.where.authorId = authorId;
-        if (status) options.where.status = status;
-
-        await db.Articles.findAll(options)
-            .then((result: Articles[]) =>
-                res.status(200).send({ articles: result })
-            )
-            .catch((error: any) => {
-                Logger.error(`ArticlesController.get error`, error);
-                res.status(500).send({ message: `Internal Server Error.` });
-            });
-        Logger.info(`ArticlesController.get is end.`);
-    }
-
     async post(req: Request, res: Response) {
         Logger.info(`ArticlesController.post is called.`);
 
