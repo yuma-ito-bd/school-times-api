@@ -6,6 +6,7 @@ import { GetArticleRequest, GetArticleResponse } from '../interface/GetArticle';
 import { ArticleRepositoryInterface } from '../usecase/article/ArticleRepository';
 import { ArticleUsecase } from '../usecase/article/ArticleUsecase';
 import { ArticleRepository } from '../interface/ArticleRepository';
+import { CreateArticleResponse } from '../interface/CreateArticle';
 
 class ArticlesController {
     private _repository: ArticleRepositoryInterface;
@@ -23,7 +24,7 @@ class ArticlesController {
         return response;
     }
 
-    async post(req: Request, res: Response) {
+    async post(req: Request, res: Response): Promise<void> {
         Logger.info(`ArticlesController.post is called.`);
 
         // トランザクションスタート
@@ -52,7 +53,8 @@ class ArticlesController {
             await tran.commit();
 
             // 成功時に作成レコード情報を返却
-            res.status(200).send(articlesResult);
+            const body: CreateArticleResponse = articlesResult;
+            res.status(200).json(body);
         } catch (error) {
             await tran.rollback();
             Logger.error(`ArticlesController.post error`, error);

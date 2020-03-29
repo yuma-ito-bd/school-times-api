@@ -14,10 +14,10 @@ articlesRouter.get('/', async (req: Request, res: Response) => {
     };
     try {
         const body = await articlesController.get(params);
-        res.status(200).send(body);
+        res.status(200).json(body);
     } catch (error) {
         Logger.error(`ArticleRouter.get error`, error);
-        res.status(500).send({ message: `Internal Server Error.` });
+        res.status(500).json({ message: `Internal Server Error.` });
     }
 });
 
