@@ -16,10 +16,16 @@ export class Article {
     readonly contents: string;
 
     constructor(data: Partial<Article>) {
-        if (!data.id) throw new Error('IDが不正です');
-        if (!data.createTime) throw new Error('作成日時が不正です');
-        if (!data.author) throw new Error('作成者が不正です');
-        if (!data.status) throw new Error('状態が不正です');
+        if (!data.id) throw new Error(`IDが不正です [${data.id}]`);
+        if (!data.createTime)
+            throw new Error(`作成日時が不正です [${data.createTime}]`);
+        if (!data.author) throw new Error(`作成者が不正です [${data.author}]`);
+        if (
+            data.status == null ||
+            !Object.values(ARTICLE_STATUS).includes(data.status)
+        ) {
+            throw new Error(`状態が不正です [${data.status}]`);
+        }
 
         this.id = data.id;
         this.createTime = data.createTime;
