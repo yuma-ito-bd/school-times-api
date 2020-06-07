@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { db } from '../../db/models/index';
-import { Articles } from '../../db/models/Articles';
+import { ArticlesTableModel } from '../../db/models/ArticlesTableModel';
 import { Logger } from '../lib/Logger';
 import { GetArticleRequest, GetArticleResponse } from '../interface/GetArticle';
 import { ArticleUsecase } from '../usecase/article/ArticleUsecase';
@@ -38,7 +38,7 @@ class ArticlesController {
                 status,
             });
 
-            const articlesResult: Articles = await db.Articles.create(
+            const articlesResult: ArticlesTableModel = await db.Articles.create(
                 {
                     title,
                     contents,
@@ -82,7 +82,7 @@ class ArticlesController {
 
             const articlesResult: [
                 number,
-                Articles[]
+                ArticlesTableModel[]
             ] = await db.Articles.update(
                 {
                     title,
@@ -127,7 +127,7 @@ class ArticlesController {
 
             const articlesResult: [
                 number,
-                Articles[]
+                ArticlesTableModel[]
             ] = await db.Articles.update(
                 {
                     deleteFlg: true,

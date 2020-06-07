@@ -1,10 +1,11 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { SCHEMA_NAME } from './Schema';
 import { Users } from './Users';
+import { COMMON_COLUMNS } from '../utils/CommonColumns';
 
 const TABLE_NAME = 'articles';
 
-export class Articles extends Model {
+export class ArticlesTableModel extends Model {
     public id!: number;
     public createTime!: Date;
     public updateTime!: Date;
@@ -17,29 +18,7 @@ export class Articles extends Model {
     public static initialize(sequelize: Sequelize): void {
         this.init(
             {
-                id: {
-                    field: 'id',
-                    type: DataTypes.INTEGER,
-                    allowNull: false,
-                    autoIncrement: true,
-                    primaryKey: true,
-                },
-                createTime: {
-                    field: 'create_time',
-                    type: DataTypes.DATE,
-                    allowNull: false,
-                },
-                updateTime: {
-                    field: 'update_time',
-                    type: DataTypes.DATE,
-                    allowNull: false,
-                },
-                deleteFlg: {
-                    field: 'delete_flg',
-                    type: DataTypes.BOOLEAN,
-                    allowNull: false,
-                    defaultValue: false,
-                },
+                ...COMMON_COLUMNS,
                 title: {
                     field: 'title',
                     type: DataTypes.STRING,
@@ -73,7 +52,7 @@ export class Articles extends Model {
     }
 
     public static associate(): void {
-        Articles.belongsTo(Users, {
+        ArticlesTableModel.belongsTo(Users, {
             foreignKey: 'author_id',
             targetKey: 'id',
         });

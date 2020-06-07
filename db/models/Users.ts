@@ -1,6 +1,6 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { SCHEMA_NAME } from './Schema';
-import { Articles } from './Articles';
+import { ArticlesTableModel } from './ArticlesTableModel';
 
 const TABLE_NAME = 'users';
 
@@ -73,7 +73,7 @@ class Users extends Model {
     }
 
     public static associate(): void {
-        Users.hasMany(Articles, {
+        Users.hasMany(ArticlesTableModel, {
             foreignKey: 'author_id',
         });
     }

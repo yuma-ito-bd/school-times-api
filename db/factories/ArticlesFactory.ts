@@ -1,7 +1,9 @@
 import { Sequelize } from 'sequelize';
-import { Articles } from '../models/Articles';
+import { ArticlesTableModel } from '../models/ArticlesTableModel';
 
-export const articleFactory = (sequelize: Sequelize): typeof Articles => {
-    Articles.initialize(sequelize);
-    return Articles;
+export const articlesFactory = (
+    sequelize: Sequelize
+): typeof ArticlesTableModel => {
+    ArticlesTableModel.initialize(sequelize);
+    return ArticlesTableModel;
 };

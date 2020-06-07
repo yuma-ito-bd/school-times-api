@@ -1,16 +1,16 @@
-import { Articles } from './Articles';
-import { articleFactory } from '../factories/ArticlesFactory';
+import { ArticlesTableModel } from './ArticlesTableModel';
+import { articlesFactory } from '../factories/ArticlesFactory';
 import { Users } from './Users';
 import { usersFactory } from '../factories/UsersFactory';
 
 export const models = {
-    Articles,
+    Articles: ArticlesTableModel,
     Users,
 };
 
 // プロパティ名はmodelsと一致させる
 export const factories = {
-    Articles: articleFactory,
+    Articles: articlesFactory,
     Users: usersFactory,
 };
 
