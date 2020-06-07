@@ -1,9 +1,15 @@
-import { ArticleRepositoryInterface } from '../usecase/article/ArticleRepository';
-import { Article } from '../domain/Article';
-import { db } from '../../db/models/index';
-import { FindAllResult } from './repositories/articles/ArticlesQueryResult';
-export class ArticleRepository implements ArticleRepositoryInterface {
-    async findByAuthorId(authorId: number): Promise<Article[]> {
+import { ArticleQueryServiceInterface } from '../../../usecase/article/ArticleQueryService';
+import { db } from '../../../../db/models/index';
+import { FindAllResult } from './ArticlesQueryResult';
+import { GetArticlesByAuthorIdResult } from '../../../usecase/article/GetArticlesByAuthorIdResult';
+
+/**
+ * 学級だよりの参照用サービスクラス
+ */
+export class ArticleQueryService implements ArticleQueryServiceInterface {
+    async getArticlesByAuthorId(
+        authorId: number
+    ): Promise<GetArticlesByAuthorIdResult[]> {
         if (!authorId) {
             throw new Error(`authorIdが不正です。[authorId: ${authorId}]`);
         }
@@ -21,14 +27,14 @@ export class ArticleRepository implements ArticleRepositoryInterface {
 
         const result: FindAllResult[] = await db.Articles.findAll(options);
         return result.map(data => {
-            return new Article({
+            return {
                 id: data.id,
                 createTime: data.createTime,
                 author: data.User.name,
                 status: data.status,
                 title: data.title,
                 contents: data.contents,
-            });
+            };
         });
     }
 }
