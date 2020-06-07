@@ -1,5 +1,5 @@
 import { Logger } from './lib/Logger';
-import App from './infrastructure/router/App';
+import App from './interface/router/App';
 
 const host: string = process.env.HOST || '0.0.0.0';
 const port: number = Number(process.env.PORT) || 3000;

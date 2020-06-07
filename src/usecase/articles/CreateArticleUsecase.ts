@@ -1,5 +1,5 @@
-import { ArticleRepositoryInterface } from './ArticleRepository';
-import { CreateArticleParams } from './CreateArticleParams';
+import { ArticleRepositoryInterface } from '../../domain/articles/ArticleRepository';
+import { CreateArticleParams } from './create/CreateArticleParams';
 import { Article } from '../../domain/articles/Article';
 
 export class CreateArticleUsecase {

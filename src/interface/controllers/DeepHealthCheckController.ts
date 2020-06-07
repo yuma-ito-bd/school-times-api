@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { db } from '../../db/models/index';
-import { Logger } from '../lib/Logger';
+import { db } from '../../infrastructure/db/models/index';
+import { Logger } from '../../lib/Logger';
 
 class DeepHealthCheckController {
     /**

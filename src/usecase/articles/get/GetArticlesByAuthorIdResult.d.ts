@@ -1,4 +1,4 @@
-import { ARTICLE_STATUS } from '../../domain/Article';
+import { ARTICLE_STATUS } from '../../../domain/articles/ArticleStatus';
 
 export type GetArticlesByAuthorIdResult = {
     id: number;

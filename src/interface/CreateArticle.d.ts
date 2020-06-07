@@ -1,5 +1,5 @@
-import { ARTICLE_STATUS } from '../domain/Article';
-import { Articles } from '../../db/models/Articles';
+import { ARTICLE_STATUS } from '../domain/articles/ArticleStatus';
+import { ArticlesTableModel } from '../infrastructure/db/models/ArticlesTableModel';
 
 export type CreateArticleRequest = {
     title: string;
@@ -8,4 +8,4 @@ export type CreateArticleRequest = {
     status: ARTICLE_STATUS;
 };
 
-export type CreateArticleResponse = Articles;
+export type CreateArticleResponse = ArticlesTableModel;

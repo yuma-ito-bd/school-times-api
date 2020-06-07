@@ -1,7 +1,7 @@
-import { ArticleQueryServiceInterface } from '../../../usecase/article/ArticleQueryService';
-import { db } from '../../../../db/models/index';
+import { ArticleQueryServiceInterface } from '../../../usecase/articles/get/ArticleQueryService';
+import { db } from '../../db/models/index';
 import { FindAllResult } from './ArticlesQueryResult';
-import { GetArticlesByAuthorIdResult } from '../../../usecase/article/GetArticlesByAuthorIdResult';
+import { GetArticlesByAuthorIdResult } from '../../../usecase/articles/get/GetArticlesByAuthorIdResult';
 
 /**
  * 学級だよりの参照用サービスクラス

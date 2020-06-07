@@ -1,4 +1,4 @@
-import { Article } from '../../domain/articles/Article';
+import { Article } from './Article';
 
 export interface ArticleRepositoryInterface {
     create(article: Article): void;

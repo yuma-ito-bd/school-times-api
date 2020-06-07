@@ -1,5 +1,5 @@
-import { ArticleRepositoryInterface } from '../src/usecase/article/ArticleRepository';
-import { Article } from '../src/domain/articles/Article';
+import { ArticleRepositoryInterface } from '../../domain/articles/ArticleRepository';
+import { Article } from '../../domain/articles/Article';
 
 export class InMemoryArticleRepository implements ArticleRepositoryInterface {
     public articleStore: Article[] = [];

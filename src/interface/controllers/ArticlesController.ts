@@ -1,12 +1,15 @@
 import { Request, Response } from 'express';
-import { db } from '../../db/models/index';
-import { ArticlesTableModel } from '../../db/models/ArticlesTableModel';
-import { Logger } from '../lib/Logger';
-import { GetArticleRequest, GetArticleResponse } from '../interface/GetArticle';
-import { ArticleUsecase } from '../usecase/article/ArticleUsecase';
-import { CreateArticleResponse } from '../interface/CreateArticle';
-import { ArticleQueryServiceInterface } from '../usecase/article/ArticleQueryService';
-import { ArticleQueryService } from '../interface/query-services/articles/ArticleQueryService';
+import { db } from '../../infrastructure/db/models/index';
+import { ArticlesTableModel } from '../../infrastructure/db/models/ArticlesTableModel';
+import { Logger } from '../../lib/Logger';
+import {
+    GetArticleRequest,
+    GetArticleResponse,
+} from '../../interface/GetArticle';
+import { ArticleUsecase } from '../../usecase/articles/get/ArticleUsecase';
+import { CreateArticleResponse } from '../../interface/CreateArticle';
+import { ArticleQueryServiceInterface } from '../../usecase/articles/get/ArticleQueryService';
+import { ArticleQueryService } from '../../infrastructure/query-services/articles/ArticleQueryService';
 
 class ArticlesController {
     private readonly _queryService: ArticleQueryServiceInterface;

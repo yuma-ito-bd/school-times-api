@@ -1,5 +1,5 @@
 import { CreateArticleUsecase } from '../../src/usecase/article/CreateArticleUsecase';
-import { InMemoryArticleRepository } from '../InMemoryArticleRepository';
+import { InMemoryArticleRepository } from '../../src/infrastructure/repositories/InMemoryArticleRepository';
 import { CreateArticleParams } from '../../src/usecase/article/CreateArticleParams';
 
 describe('CreateArticleUsecase', () => {

@@ -1,4 +1,4 @@
-import { GetArticlesByAuthorIdResult } from '../usecase/article/GetArticlesByAuthorIdResult';
+import { GetArticlesByAuthorIdResult } from '../usecase/articles/get/GetArticlesByAuthorIdResult';
 
 export type GetArticleRequest = {
     articleId?: number;

@@ -1,4 +1,4 @@
-import { Users } from '../../../../db/models/Users';
+import { Users } from '../../db/models/Users';
 
 export type FindAllResult = {
     id: number;
