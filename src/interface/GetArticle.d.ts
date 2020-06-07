@@ -1,4 +1,4 @@
-import { Article } from '../domain/Article';
+import { GetArticlesByAuthorIdResult } from '../usecase/article/GetArticlesByAuthorIdResult';
 
 export type GetArticleRequest = {
     articleId?: number;
@@ -7,5 +7,5 @@ export type GetArticleRequest = {
 };
 
 export type GetArticleResponse = {
-    articles: Article[];
+    articles: GetArticlesByAuthorIdResult[];
 };

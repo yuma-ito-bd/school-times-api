@@ -3,21 +3,21 @@ import { db } from '../../db/models/index';
 import { Articles } from '../../db/models/Articles';
 import { Logger } from '../lib/Logger';
 import { GetArticleRequest, GetArticleResponse } from '../interface/GetArticle';
-import { ArticleRepositoryInterface } from '../usecase/article/ArticleRepository';
 import { ArticleUsecase } from '../usecase/article/ArticleUsecase';
-import { ArticleRepository } from '../interface/ArticleRepository';
 import { CreateArticleResponse } from '../interface/CreateArticle';
+import { ArticleQueryServiceInterface } from '../usecase/article/ArticleQueryService';
+import { ArticleQueryService } from '../interface/query-services/articles/ArticleQueryService';
 
 class ArticlesController {
-    private _repository: ArticleRepositoryInterface;
+    private readonly _queryService: ArticleQueryServiceInterface;
 
     constructor() {
-        this._repository = new ArticleRepository();
+        this._queryService = new ArticleQueryService();
     }
 
     async get(params: GetArticleRequest): Promise<GetArticleResponse> {
         Logger.info(`ArticlesController.get is called.`, params);
-        const usecase = new ArticleUsecase(this._repository);
+        const usecase = new ArticleUsecase(this._queryService);
         const list = await usecase.getArticleList(Number(params.authorId));
         const response: GetArticleResponse = { articles: list };
         Logger.info(`ArticlesController.get is end.`, JSON.stringify(response));

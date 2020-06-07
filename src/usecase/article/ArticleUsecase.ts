@@ -1,10 +1,16 @@
-import { ArticleRepositoryInterface } from './ArticleRepository';
-import { Article } from '../../domain/Article';
+import { ArticleQueryServiceInterface } from './ArticleQueryService';
+import { GetArticlesByAuthorIdResult } from './GetArticlesByAuthorIdResult';
 
 export class ArticleUsecase {
-    constructor(private _articleRepository: ArticleRepositoryInterface) {}
+    constructor(private _queryService: ArticleQueryServiceInterface) {}
 
-    async getArticleList(authorId: number): Promise<Article[]> {
-        return await this._articleRepository.findByAuthorId(authorId);
+    /**
+     * 学級だよりリストを取得する
+     * @param authorId 作者ID
+     */
+    async getArticleList(
+        authorId: number
+    ): Promise<GetArticlesByAuthorIdResult[]> {
+        return await this._queryService.getArticlesByAuthorId(authorId);
     }
 }
