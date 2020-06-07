@@ -10,8 +10,8 @@ export class Article {
     private _status: ARTICLE_STATUS;
 
     constructor(data: {
-        title: string;
-        contents: string;
+        title?: string;
+        contents?: string;
         classId: number;
         authorId: number;
         status: number;
