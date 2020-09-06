@@ -24,8 +24,8 @@ articlesRouter.get('/', async (req: Request, res: Response) => {
 articlesRouter.post('/', (req: Request, res: Response) =>
     articlesController.post(req, res)
 );
-articlesRouter.patch('/:articleId', (req: Request, res: Response) =>
-    articlesController.patch(req, res)
+articlesRouter.put('/:articleId', (req: Request, res: Response) =>
+    articlesController.put(req, res)
 );
 articlesRouter.delete('/:articleId', (req: Request, res: Response) =>
     articlesController.delete(req, res)

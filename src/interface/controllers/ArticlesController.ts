@@ -67,8 +67,13 @@ class ArticlesController {
         }
     }
 
-    async patch(req: Request, res: Response) {
-        Logger.info(`ArticlesController.patch is called.`);
+    /**
+     * 学級だよりの更新を行う
+     * @param req
+     * @param res
+     */
+    async put(req: Request, res: Response): Promise<void> {
+        Logger.info(`ArticlesController.put is called.`);
 
         // トランザクションスタート
         const tran = await db.sequelize.transaction();
@@ -83,10 +88,10 @@ class ArticlesController {
                 status,
             });
 
-            const articlesResult: [
+            const [updateNum, articles]: [
                 number,
                 ArticlesTableModel[]
-            ] = await db.Articles.update(
+            ] = await db.Articles.update<ArticlesTableModel>(
                 {
                     title,
                     contents,
@@ -106,16 +111,17 @@ class ArticlesController {
             await tran.commit();
 
             // 成功時に更新レコード情報を返却
-            res.status(200).send({
-                updateNum: articlesResult[0],
-                articles: articlesResult[1],
-            });
+            const body = {
+                updateNum,
+                articles,
+            };
+            res.status(200).json(body);
         } catch (error) {
             await tran.rollback();
-            Logger.error(`ArticlesController.patch error`, error);
+            Logger.error(`ArticlesController.put error`, error);
             res.status(500).send({ message: `Internal Server Error.` });
         } finally {
-            Logger.info(`ArticlesController.patch is end.`);
+            Logger.info(`ArticlesController.put is end.`);
         }
     }
 
