@@ -111,10 +111,11 @@ class ArticlesController {
             await tran.commit();
 
             // 成功時に更新レコード情報を返却
-            res.status(200).send({
+            const body = {
                 updateNum,
                 articles,
-            });
+            };
+            res.status(200).json(body);
         } catch (error) {
             await tran.rollback();
             Logger.error(`ArticlesController.put error`, error);

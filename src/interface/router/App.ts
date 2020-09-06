@@ -12,8 +12,10 @@ export default class App {
         this.app = express();
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
-        this.app.use(function(req, res, next) {
+        this.app.use((req, res, next) => {
+            // CORS対策
             res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             res.header('Access-Control-Allow-Headers', 'Content-Type');
             next();
         });
