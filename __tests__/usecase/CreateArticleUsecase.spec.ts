@@ -1,6 +1,6 @@
-import { CreateArticleUsecase } from '../../src/usecase/article/CreateArticleUsecase';
+import { CreateArticleUsecase } from '../../src/usecase/articles/create/CreateArticleUsecase';
 import { InMemoryArticleRepository } from '../../src/infrastructure/repositories/InMemoryArticleRepository';
-import { CreateArticleParams } from '../../src/usecase/article/CreateArticleParams';
+import { CreateArticleParams } from '../../src/usecase/articles/create/CreateArticleParams';
 
 describe('CreateArticleUsecase', () => {
     let testRepository: InMemoryArticleRepository;

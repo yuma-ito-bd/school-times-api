@@ -5,9 +5,9 @@ import { Logger } from '../../lib/Logger';
 import {
     GetArticleRequest,
     GetArticleResponse,
-} from '../../interface/GetArticle';
+} from '../../interface/types/GetArticle';
 import { ArticleUsecase } from '../../usecase/articles/get/ArticleUsecase';
-import { CreateArticleResponse } from '../../interface/CreateArticle';
+import { CreateArticleResponse } from '../../interface/types/CreateArticle';
 import { ArticleQueryServiceInterface } from '../../usecase/articles/get/ArticleQueryService';
 import { ArticleQueryService } from '../../infrastructure/query-services/articles/ArticleQueryService';
 

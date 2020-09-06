@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { articlesController } from '../controllers/ArticlesController';
-import { GetArticleRequest } from '../GetArticle';
+import { GetArticleRequest } from '../types/GetArticle';
 import { Logger } from '../../lib/Logger';
 
 const articlesRouter = Router();
