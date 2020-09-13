@@ -33,11 +33,12 @@ class ArticlesController {
         // トランザクションスタート
         const tran = await db.sequelize.transaction();
         try {
-            const { title, contents, authorId, status } = req.body;
+            const { title, contents, authorId, classId, status } = req.body;
             Logger.info(`Input param`, {
                 title,
                 contents,
                 authorId,
+                classId,
                 status,
             });
 
@@ -46,6 +47,7 @@ class ArticlesController {
                     title,
                     contents,
                     authorId,
+                    classId,
                     status,
                 },
                 {
