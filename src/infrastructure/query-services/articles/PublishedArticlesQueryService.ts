@@ -34,7 +34,7 @@ export class PublishedArticlesQueryService
             return {
                 id,
                 createTime,
-                authorName: User.name,
+                author: User.name,
                 title,
                 contents,
             };
