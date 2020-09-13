@@ -23,7 +23,7 @@ class ArticlesController {
         const usecase = new ArticleUsecase(this._queryService);
         const list = await usecase.getArticleList(Number(params.authorId));
         const response: GetArticleResponse = { articles: list };
-        Logger.info(`ArticlesController.get is end.`, JSON.stringify(response));
+        Logger.info(`ArticlesController.get is end.`, response);
         return response;
     }
 
