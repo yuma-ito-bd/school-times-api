@@ -11,7 +11,7 @@ export class PublishedArticlesController {
      */
     public async get(req: Request, res: Response): Promise<void> {
         // パラメータのチェック
-        const classId = Number(req.params.classId);
+        const classId = Number(req.query.classId);
         if (!Number.isFinite(classId)) {
             Logger.warn('パラメータが不正', classId);
             res.status(400).json({ message: 'classIdが不正です' });
