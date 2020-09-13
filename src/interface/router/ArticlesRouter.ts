@@ -2,7 +2,9 @@ import { Request, Response, Router } from 'express';
 import { articlesController } from '../controllers/ArticlesController';
 import { GetArticleRequest } from '../types/GetArticle';
 import { Logger } from '../../lib/Logger';
+import { PublishedArticlesController } from '../controllers/PublishedArticlesController';
 
+// Routerはルーティング以外のことはしない方がよい。パラメータの受け取りやレスポンスの生成はコントローラで行う。
 const articlesRouter = Router();
 
 articlesRouter.get('/', async (req: Request, res: Response) => {
@@ -29,6 +31,10 @@ articlesRouter.put('/:articleId', (req: Request, res: Response) =>
 );
 articlesRouter.delete('/:articleId', (req: Request, res: Response) =>
     articlesController.delete(req, res)
+);
+
+articlesRouter.post('/published/:articleId', (req: Request, res: Response) =>
+    new PublishedArticlesController().post(req, res)
 );
 
 export { articlesRouter };
