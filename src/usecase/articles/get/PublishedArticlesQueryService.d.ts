@@ -4,7 +4,7 @@ export type PublishedArticle = {
     /** 作成日時 */
     createTime: Date;
     /** 作成者名 */
-    authorName: string;
+    author: string;
     /** タイトル */
     title?: string;
     /** 本文 */
