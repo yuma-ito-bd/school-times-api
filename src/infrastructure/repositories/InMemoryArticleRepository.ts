@@ -10,4 +10,11 @@ export class InMemoryArticleRepository implements ArticleRepositoryInterface {
     public create(article: Article): void {
         this.articleStore.push(article);
     }
+    /**
+     * publish
+     * @param id
+     */
+    publish(id: number): Promise<number> {
+        throw new Error('Method not implemented.');
+    }
 }
