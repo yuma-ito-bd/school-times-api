@@ -1,4 +1,5 @@
 import { FindOptions } from 'sequelize/types';
+import { ARTICLE_STATUS } from '../../../domain/articles/ArticleStatus';
 import {
     PublishedArticle,
     PublishedArticlesQueryServiceInterface,
@@ -14,7 +15,11 @@ export class PublishedArticlesQueryService
      */
     async fetchByClassId(classId: number): Promise<PublishedArticle[]> {
         const options: FindOptions = {
-            where: { deleteFlg: false, classId },
+            where: {
+                deleteFlg: false,
+                classId,
+                status: ARTICLE_STATUS.PUBLISHED,
+            },
             order: [['createTime', 'desc']],
             include: [
                 {
