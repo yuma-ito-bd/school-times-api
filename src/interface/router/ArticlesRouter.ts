@@ -33,6 +33,9 @@ articlesRouter.delete('/:articleId', (req: Request, res: Response) =>
     articlesController.delete(req, res)
 );
 
+articlesRouter.get('/published/:classId', (req: Request, res: Response) =>
+    new PublishedArticlesController().get(req, res)
+);
 articlesRouter.post('/published/:articleId', (req: Request, res: Response) =>
     new PublishedArticlesController().post(req, res)
 );

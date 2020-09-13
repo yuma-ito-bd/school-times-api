@@ -5,6 +5,17 @@ import { PublishArticlesUsecase } from '../../usecase/articles/publish/PublishAr
 
 export class PublishedArticlesController {
     /**
+     * getリクエストがきたときの処理
+     */
+    public async get(req: Request, res: Response): Promise<void> {
+        // TODO パラメータのチェック
+        // TODO クエリサービスのインスタンス化
+        // TODO ユースケースの実行
+        // TODO レスポンス
+        res.status(200).json({ message: 'ok' });
+    }
+
+    /**
      * postリクエストがきたときの処理
      */
     public async post(req: Request, res: Response): Promise<void> {
