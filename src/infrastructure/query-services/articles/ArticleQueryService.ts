@@ -1,7 +1,8 @@
 import { ArticleQueryServiceInterface } from '../../../usecase/articles/get/ArticleQueryService';
 import { db } from '../../db/models/index';
-import { FindAllResult } from './ArticlesQueryResult';
+import { ArticleWithUser } from './ArticlesQueryResult';
 import { GetArticlesByAuthorIdResult } from '../../../usecase/articles/get/GetArticlesByAuthorIdResult';
+import { FindOptions } from 'sequelize/types';
 
 /**
  * 学級だよりの参照用サービスクラス
@@ -14,7 +15,7 @@ export class ArticleQueryService implements ArticleQueryServiceInterface {
             throw new Error(`authorIdが不正です。[authorId: ${authorId}]`);
         }
 
-        const options: any = {
+        const options: FindOptions = {
             where: { deleteFlg: false, authorId },
             order: [['createTime', 'desc']],
             include: [
@@ -25,7 +26,9 @@ export class ArticleQueryService implements ArticleQueryServiceInterface {
             ],
         };
 
-        const result: FindAllResult[] = await db.Articles.findAll(options);
+        const result = ((await db.Articles.findAll(
+            options
+        )) as unknown) as ArticleWithUser[];
         return result.map(data => {
             return {
                 id: data.id,

@@ -1,6 +1,6 @@
 import { Users } from '../../db/models/Users';
 
-export type FindAllResult = {
+export type ArticleWithUser = {
     id: number;
     createTime: Date;
     updateTime: Date;
