@@ -28,6 +28,7 @@
   "homepage": "https://github.com/yuma-ito-bd/school-times-api#readme",
   "dependencies": {
     "@types/express": "^4.17.2",
+    "@types/sequelize": "^4.28.9",
     "date-fns": "^2.10.0",
     "date-fns-timezone": "^0.1.4",
     "express": "^4.17.1",
