@@ -29,7 +29,9 @@ export class PublishedArticlesQueryService
             ],
         };
 
-        const result: QueryResult = await db.Articles.findAll(options);
+        const result = ((await db.Articles.findAll(
+            options
+        )) as unknown) as QueryResult;
         return result.map(({ id, createTime, User, title, contents }) => {
             return {
                 id,
