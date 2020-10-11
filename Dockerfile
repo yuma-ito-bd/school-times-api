@@ -3,14 +3,15 @@ FROM node:12.16.1-alpine3.9 AS builder
 
 WORKDIR /app
 COPY . /app/
-RUN npm ci && npm run build
+RUN npm i 
+RUN npm run build
 
 # for release
 FROM node:12.16.1-alpine3.9
 WORKDIR /app
 COPY --from=builder /app/dist /app/dist
-COPY config .
-COPY ./package.json ./package-lock.json /app/
+COPY config /app/config
+COPY ./package.json ./package-lock.json .sequelizerc /app/
 RUN npm ci --production
 
 ENV NODE_ENV production
