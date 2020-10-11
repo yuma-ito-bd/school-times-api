@@ -10,7 +10,7 @@ module.exports = {
             'class_id',
             {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
             }
         );
     },

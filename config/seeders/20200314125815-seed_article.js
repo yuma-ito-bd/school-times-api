@@ -13,6 +13,7 @@ module.exports = {
                     contents: 'これからよろしくね',
                     author_id: 1,
                     status: 2,
+                    class_id: 1,
                 },
                 {
                     create_time: new Date(2020, 6, 1),
@@ -22,6 +23,7 @@ module.exports = {
                     contents: 'さあ夏休みです！',
                     author_id: 1,
                     status: 2,
+                    class_id: 1,
                 },
                 {
                     create_time: new Date(2020, 9, 1),
@@ -31,6 +33,7 @@ module.exports = {
                     contents: '楽しもうね！',
                     author_id: 1,
                     status: 2,
+                    class_id: 1,
                 },
             ]
         );
