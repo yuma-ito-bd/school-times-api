@@ -3,12 +3,13 @@ FROM node:12.16.1-alpine3.9
 # install dependencies
 RUN mkdir -p /app
 WORKDIR /app
-ADD . /app
 
+COPY ./package.json ./package-lock.json /app/
 RUN npm install --production && npm audit fix
 
-# set application PORT and expose docker PORT, 80 is what Elastic Beanstalk expects
-ENV PORT 80
-EXPOSE 80
+COPY . /app
+RUN npm run build
+
+ENV NODE_ENV production
 
 CMD ["npm", "start"]

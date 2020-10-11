@@ -7,11 +7,14 @@
     "conpile": "rm -rf ./dist && tsc",
     "start": "node ./dist/server.js",
     "nodemon": "nodemon -L --config nodemon/nodemon.json",
+    "build": "tsc",
     "test": "jest",
     "migrate": "sequelize db:migrate --env=development",
     "migrate:undo": "sequelize db:migrate:undo --env=development",
     "seed:all": "sequelize db:seed:all --env=development",
-    "seed:undo:all": "sequelize db:seed:undo:all --env=development"
+    "seed:undo:all": "sequelize db:seed:undo:all --env=development",
+    "heroku:push": "heroku container:push web -a school-times",
+    "heroku:release": "heroku container:release web -a school-times"
   },
   "repository": {
     "type": "git",
