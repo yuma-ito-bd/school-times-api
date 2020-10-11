@@ -1,39 +1,29 @@
 export class Teacher {
-    private _id: number;
-    private _name: string;
-    private _schoolId: number;
-    private _classId: number;
+    readonly id: number;
+    readonly name: string;
+    readonly schoolId: number;
+    readonly classId: number;
 
     constructor(data: Partial<Teacher>) {
-        this._checkInput(data);
+        const params = this._checkInput(data);
 
-        this._id = data.id;
-        this._name = data.name;
-        this._schoolId = data.schoolId;
-        this._classId = data.classId;
+        this.id = params.id;
+        this.name = params.name;
+        this.schoolId = params.schoolId;
+        this.classId = params.classId;
     }
 
     /**
      * 引数を検証する
      * @param data
      */
-    private _checkInput(data: Partial<Teacher>): void {
-        if (data.id && data.name && data.schoolId && data.classId) {
-            return;
+    private _checkInput(
+        data: Partial<Teacher>
+    ): { [P in keyof Teacher]: Teacher[P] } {
+        const { id, name, schoolId, classId } = data;
+        if (id && name && schoolId && classId) {
+            return { id, name, schoolId, classId };
         }
         throw new Error(`引数が不正です [${JSON.stringify(data)}]`);
-    }
-
-    get id(): number {
-        return this._id;
-    }
-    get name(): string {
-        return this._name;
-    }
-    get schoolId(): number {
-        return this._schoolId;
-    }
-    get classId(): number {
-        return this._classId;
     }
 }
